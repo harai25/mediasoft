@@ -1,0 +1,49 @@
+.contact-item {
+  height: 75px;
+  border-bottom: 1px solid black;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.contact-item__image {
+  width: 80px;
+  text-align: center;
+  margin-left: 5px;
+}
+
+.contact-item__info {
+  width: 100%;
+  margin-left: 10px;
+}
+
+.contact-item__name {
+  font-size: 20px;
+  margin-bottom: 7px;
+}
+
+.contact-item__phone {
+  font-size: 14px;
+}
+
+.contact-item__actions {
+  text-align: center;
+  width: 80px;
+}
+
+.contact-item__remove {
+  cursor: pointer;
+  margin-bottom: 7px;
+}
+
+.contact-item__remove i {
+  font-size: 12px;
+}
+
+.contact-item__favorite {
+  cursor: pointer;
+}
+
+.contact-item__favorite i {
+  font-size: 12px;
+}

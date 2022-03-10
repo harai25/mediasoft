@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import './App.css'
+import ContactList from './contact_list/ContactList'
+import ContactAdd from './contact_add/ContactAdd'
+import { Pages, PageContext } from './PagesContext'
 
 function App() {
+  const [currentPage, setCurrentPage] = useState(Pages.ContactList)
+
+
+  const getCurrentComponent = (page: Pages) => {
+    if (page === Pages.ContactList) {
+      return <ContactList />
+    } else if (page === Pages.ContactAdd) {
+      return <ContactAdd />
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <PageContext.Provider value={{currentPage, setCurrentPage}}>
+
+      {getCurrentComponent(currentPage)}
+
+    </PageContext.Provider>
+  )
 }
 
-export default App;
+export default App
