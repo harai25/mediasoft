@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './Search.css'
 
 export interface SearchProps {
@@ -8,16 +8,13 @@ export interface SearchProps {
 }
 
 function Search(props: SearchProps) {
-  const [searchString, setSearchString] = useState(props.value)
-
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchString(event.target.value)
-    props.input(searchString)
+    props.input(event.target.value)
   }
 
   return (
     <div className={`${props.className} search`}>
-        <input type="text" value={searchString} onChange={onChange} />
+        <input type="text" value={props.value} onChange={onChange} />
         <i className='fa fa-search'></i>
     </div>
     

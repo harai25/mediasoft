@@ -1,11 +1,18 @@
-import React from 'react'
 import './ContactItem.css'
 import profileImage from '../assets/profile.png'
+import { ContactI } from '../types/Contact'
 
-function ContactItem() {
+export interface ContactItemProps {
+  contact: ContactI,
+  remove: (e: ContactI) => void,
+  toggleFavorite: (e: ContactI) => void,
+}
+
+
+function ContactItem({contact, remove, toggleFavorite}: ContactItemProps) {
 
   const getHeart = () => {
-    if (true) {
+    if (contact.favorite) {
       return <i className='fas fa-heart'></i>
     } else {
       return <i className='far fa-heart'></i>
@@ -22,20 +29,20 @@ function ContactItem() {
 
       <div className='contact-item__info'>
         <div className='contact-item__name'>
-          Name
+          {contact.name}
         </div>
         <div className='contact-item__phone'>
-          Phone
+          {contact.phone}
         </div>
       </div>
 
 
       <div className='contact-item__actions'>
-        <div className='contact-item__remove'>
+        <div className='contact-item__remove' onClick={() => remove(contact)}>
           <i className='fa fa-times'></i>
         </div>
 
-        <div className='contact-item__favorite'>
+        <div className='contact-item__favorite' onClick={() => toggleFavorite(contact)}>
           {getHeart()}
         </div>
       </div>
