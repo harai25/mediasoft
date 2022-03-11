@@ -13,7 +13,7 @@ function ContactList() {
   const [contactList, setContactList] = useState<ContactI[]>([])
 
   const validContactList = useMemo(() => {
-    const sortedList = contactList.sort((a, b) => +b.favorite - +a.favorite || a.name.localeCompare(b.name))
+    const sortedList = contactList.sort((a, b) => +b.favorite - +a.favorite || a.uniqName.localeCompare(b.uniqName))
     if (searchString) {
       return sortedList.filter(e => e.name.includes(searchString))
     } else {
@@ -24,7 +24,9 @@ function ContactList() {
   const createContact = (contact: ContactI) => {
     const sameNameCount = contactList.filter(e => e.name === contact.name).length
     if (sameNameCount) {
-      contact.name = `${contact.name} (${sameNameCount + 1})`
+      contact.uniqName = `${contact.name} (${sameNameCount + 1})`
+    } else {
+      contact.uniqName = contact.name
     }
     setContactList([...contactList, contact])
   }
@@ -59,7 +61,7 @@ function ContactList() {
         {validContactList.map(
           e => {
             return <ContactItem 
-              key={e.name} 
+              key={e.uniqName} 
               contact={e} 
               remove={removeContact}
               toggleFavorite={toggleFavorite}

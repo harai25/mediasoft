@@ -16,9 +16,10 @@ export interface ContactAddProps {
 function ContactAdd(props: ContactAddProps) {
 
   const [form, setForm] = useState<ContactI>({
+    uniqName: '',
     name: '',
     phone: '',
-    favorite: false
+    favorite: false,
   })
 
   const [errors, setErrors] = useState<ContactErrorsI>({
