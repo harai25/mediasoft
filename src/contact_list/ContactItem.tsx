@@ -29,7 +29,7 @@ function ContactItem({contact, remove, toggleFavorite}: ContactItemProps) {
 
       <div className='contact-item__info'>
         <div className='contact-item__name'>
-          {contact.uniqName}
+          {contact.name}
         </div>
         <div className='contact-item__phone'>
           {contact.phone}
